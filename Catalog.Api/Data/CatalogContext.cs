@@ -1,6 +1,7 @@
 ﻿using Catalog.Api.Data.Interfaces;
 using Catalog.Api.Entities;
 using Catalog.Api.Settings;
+using Catalog.API.Data;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
