@@ -57,9 +57,6 @@ namespace Catalog.Api.Repositories
             return deleteResult.IsAcknowledged && deleteResult.DeletedCount > 0;
         }
 
-   
- 
- 
 
         public async Task<bool> Update(Product product)
         {
