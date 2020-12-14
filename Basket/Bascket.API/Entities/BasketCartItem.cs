@@ -1,6 +1,6 @@
 ﻿namespace Bascket.API.Entities
 {
-    public class BascketCartItem
+    public class BasketCartItem
     {
         public int Quantity { get; set; }
         public string Color { get; set; }

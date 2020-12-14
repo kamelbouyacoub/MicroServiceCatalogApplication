@@ -1,3 +1,7 @@
+using Bascket.API.Data;
+using Bascket.API.Data.Interfaces;
+using Bascket.API.Repositories;
+using Bascket.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +34,8 @@ namespace Bascket.API
                 var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
+            services.AddTransient<IBascketContext, BasketContext>();
+            services.AddTransient<IBasketRepository, BasketRepository>();
             services.AddControllers();
         }
 

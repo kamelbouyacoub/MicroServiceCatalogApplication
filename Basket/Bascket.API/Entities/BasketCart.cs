@@ -8,7 +8,7 @@ namespace Bascket.API.Entities
     public class BasketCart
     {
         public string UserName { get; set; }
-        public List<BascketCartItem> Items { get; set; }
+        public List<BasketCartItem> Items { get; set; }
 
         public BasketCart()
         {

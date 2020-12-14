@@ -1,25 +1,50 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bascket.API.Entities;
+using Bascket.API.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Bascket.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class BasketController : ControllerBase
     {
      
 
         private readonly ILogger<BasketController> _logger;
+        private readonly IBasketRepository _repository;
 
-        public BasketController(ILogger<BasketController> logger)
+        public BasketController(ILogger<BasketController> logger, IBasketRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
-      
+        [HttpGet]
+        [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<BasketCart>> GetBasket(string userName)
+        {
+            var _basket = await _repository.Getbascket(userName);
+            return Ok(_basket);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<BasketCart>> UpdateBasket([FromBody]BasketCart basket)
+        {
+            var _basket = await _repository.UpdateBascket(basket);
+            return Ok(_basket);
+        }
+
+        [HttpDelete("{userName}")]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<BasketCart>> DeleteBasket( string userName)
+        {
+            var _basket = await _repository.DeleteBasket(userName);
+            return Ok(_basket);
+        }
+
     }
 }

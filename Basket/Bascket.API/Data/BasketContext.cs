@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Bascket.API.Data
 {
-    public class BascketContext : IBascketContext
+    public class BasketContext : IBascketContext
     {
         private readonly ConnectionMultiplexer _redisConnection;
 
-        public BascketContext(ConnectionMultiplexer redisConnection)
+        public BasketContext(ConnectionMultiplexer redisConnection)
         {
             this._redisConnection = redisConnection;
             Redis = redisConnection.GetDatabase();
