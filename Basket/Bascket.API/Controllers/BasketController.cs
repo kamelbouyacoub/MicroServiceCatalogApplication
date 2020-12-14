@@ -13,12 +13,11 @@ namespace Bascket.API.Controllers
     {
      
 
-        private readonly ILogger<BasketController> _logger;
+
         private readonly IBasketRepository _repository;
 
-        public BasketController(ILogger<BasketController> logger, IBasketRepository repository)
+        public BasketController( IBasketRepository repository)
         {
-            _logger = logger;
             _repository = repository;
         }
 
