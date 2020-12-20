@@ -22,7 +22,7 @@ namespace Bascket.API.Repositories
             return  await context.Redis.KeyDeleteAsync(userName);
         }
 
-        public async Task<BasketCart> Getbascket(string userName)
+        public async Task<BasketCart> GetBascket(string userName)
         {
             var _basket = await context.Redis.StringGetAsync(userName);
             if (_basket.IsNullOrEmpty) return null;
@@ -33,7 +33,7 @@ namespace Bascket.API.Repositories
         {
             var updated = await context.Redis.StringSetAsync(basket.UserName, JsonConvert.SerializeObject(basket));
             if (!updated) return null;
-            return await Getbascket(basket.UserName);
+            return await GetBascket(basket.UserName);
         }
     }
 }

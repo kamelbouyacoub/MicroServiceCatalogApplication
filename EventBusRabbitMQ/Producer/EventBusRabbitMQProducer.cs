@@ -33,7 +33,7 @@ namespace EventBusRabbitMQ.Producer
                 channel.WaitForConfirmsOrDie();
 
                 channel.BasicAcks += (sender, eventArgs) => {
-
+                    Console.WriteLine("Queue ...");
                 };
                 channel.ConfirmSelect();
             }

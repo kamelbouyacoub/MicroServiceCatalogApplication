@@ -8,7 +8,7 @@ namespace Bascket.API.Repositories.Interfaces
 {
     public interface IBasketRepository
     {
-        Task<BasketCart> Getbascket(string userName);
+        Task<BasketCart> GetBascket(string userName);
         Task<BasketCart> UpdateBascket(BasketCart basket
             );
         Task<bool> DeleteBasket(string userName);

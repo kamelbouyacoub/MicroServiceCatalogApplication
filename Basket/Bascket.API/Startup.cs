@@ -1,8 +1,10 @@
+using AutoMapper;
 using Bascket.API.Data;
 using Bascket.API.Data.Interfaces;
 using Bascket.API.Repositories;
 using Bascket.API.Repositories.Interfaces;
 using EventBusRabbitMQ;
+using EventBusRabbitMQ.Producer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +41,10 @@ namespace Bascket.API
             });
             services.AddTransient<IBascketContext, BasketContext>();
             services.AddTransient<IBasketRepository, BasketRepository>();
+   
+ 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket API", Version = "v1" }));
+            services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<IRabbitMQConnection>(sp =>
             {
                 var factory = new ConnectionFactory()
@@ -54,7 +59,7 @@ namespace Bascket.API
 
                 return new RabbitMQConnection(factory);
             });
-
+            services.AddSingleton<EventBusRabbitMQProducer>();
             services.AddControllers();
         }
 
