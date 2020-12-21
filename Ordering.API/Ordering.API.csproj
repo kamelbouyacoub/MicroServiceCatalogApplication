@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ordering.Infrastructure\Ordering.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Orderning.Application\Orderning.Application.csproj" />
+    <ProjectReference Include="..\Ordering.Core\Ordering.Core.csproj" />
+  </ItemGroup>
+
 
 </Project>
