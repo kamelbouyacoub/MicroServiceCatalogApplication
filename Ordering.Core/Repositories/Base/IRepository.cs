@@ -25,7 +25,7 @@ namespace Ordering.Core.Entities.Repositories.Base
 
         Task<T> GetByIdAsync(int id);
         Task<T> AddAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(int id);
+        Task  UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
     }
 }
