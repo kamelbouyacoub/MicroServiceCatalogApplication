@@ -12,7 +12,7 @@ namespace Orderning.Application.Queries
 
         public GetOrderByUserNameQuery(string userName)
         {
-            userName = userName ?? throw new ArgumentException(nameof(userName));
+            UserName = userName ?? throw new ArgumentException(nameof(userName));
         }
     }
 }
