@@ -54,7 +54,12 @@ namespace Bascket.API
 
                 if (!string.IsNullOrEmpty(Configuration[""]))
                 {
-                    factory.UserName = Configuration["EventBus:Password"];
+                    factory.UserName = Configuration["EventBus:UserName"];
+                }
+
+                if (!string.IsNullOrEmpty(Configuration[""]))
+                {
+                    factory.Password = Configuration["EventBus:Password"];
                 }
 
                 return new RabbitMQConnection(factory);
