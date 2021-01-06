@@ -44,8 +44,7 @@ namespace Ordering.API
             services.AddMediatR(typeof(CheckoutOrderHandler).GetTypeInfo().Assembly);
 
 
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ordering API", Version = "v1" }));
-            services.AddSingleton<IRabbitMQConnection>(sp =>
+             services.AddSingleton<IRabbitMQConnection>(sp =>
             {
                 var factory = new ConnectionFactory()
                 {
@@ -65,7 +64,12 @@ namespace Ordering.API
                 return new RabbitMQConnection(factory);
             });
 
-            services.AddSingleton<EventBusRabbitMQConsumer>(); 
+            services.AddSingleton<EventBusRabbitMQConsumer>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Order API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
