@@ -76,8 +76,8 @@ services:
             - "8002:80"
 
 
-    ocelotapigateway:
-      container_name: ocelotapigateway
+    apigateway:
+      container_name: apigateway
       environment:
          - ASPNETCORE_ENVIRONMENT=Development
       depends_on:
@@ -87,3 +87,19 @@ services:
       ports:
          - "7000:80"
 
+
+    aspnetrunbasics:
+        container_name: aspnetrunbasics
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ApiSettings:BaseAddress=apigateway"
+        depends_on:
+            - catalog.api
+            - basket.api
+            - ordering.api
+            - apigateway
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+        ports:
+            - "8003:80"

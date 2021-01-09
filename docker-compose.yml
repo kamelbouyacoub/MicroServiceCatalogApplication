@@ -33,9 +33,15 @@ services:
 
 
 
-    ocelotapigateway:
-        image: ${DOCKER_REGISTRY-}ocelotapigateway
+    apigateway:
+        image: ${DOCKER_REGISTRY-}apigateway
         build:
             context: .
             dockerfile: OcelotApiGateway/Dockerfile
 
+
+    aspnetrunbasics:
+        image: ${DOCKER_REGISTRY-}aspnetrunbasics
+        build:
+            context: .
+            dockerfile: WebApp/AspnetRunBasics/Dockerfile

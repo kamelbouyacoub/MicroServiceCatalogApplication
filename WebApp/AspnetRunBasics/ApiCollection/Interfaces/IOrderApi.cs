@@ -8,6 +8,6 @@ namespace AspnetRunBasics.ApiCollection.Interfaces
 {
     public interface IOrderApi
     {
-        Task<IEnumerable<OrderResponseModel>> GetOrderByUserName(string userName);
+        Task<IEnumerable<OrderResponseModel>> GetOrdersByUserName(string userName);
     }
 }
